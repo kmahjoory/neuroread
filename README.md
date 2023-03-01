@@ -16,10 +16,13 @@ for preprocessing I use f_lp = 32 Hz for EEG and f_lp = 64 for envelopes. Later 
 
 # To do
 
-- Implement sampler for batch, maybe torch dataloader
-- implement validation inside the training loop
-- implement gpu functionality
-- swithc to more advanced optimizer
-- set optimial learning rate
-- code testing on test set
+- temporal information in the embedding can be destroyed in the last layer or depthwise layer.
+
+
 - testing on spatial attention detection
+
+
+- Grid search over different model structures
+https://www.youtube.com/watch?v=lV09_8432VA&list=PLQVvvaa0QuDfhTox0AjmQ6tvTgMBZBEXN&index=6
+- Grid search over parameters
+https://machinelearningmastery.com/how-to-grid-search-hyperparameters-for-pytorch-models/
