@@ -12,9 +12,7 @@ import numpy as np
 
 import mne
 
-import matplotlib
-import matplotlib.pyplot as plt
-import time
+
 
 from torchsummary import summary
 from torch.utils.tensorboard import SummaryWriter
