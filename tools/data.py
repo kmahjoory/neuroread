@@ -57,6 +57,6 @@ def rm_repeated_annotations(raw):
     durations = [i['duration'] for i in annots_updated]
     descriptions = [i['description'] for i in annots_updated]
     print('Initial num of annots: %d  Num of removed annots: %d  Num of retained annots:  %d' % (len(annots), len(annots_drop), len(annots_updated)))
-    print(f' New annots: {annots_updated}')
+    #print(f' New annots: {annots_updated}')
     raw.set_annotations(mne.Annotations(onsets, durations, descriptions) ) 
     return raw
