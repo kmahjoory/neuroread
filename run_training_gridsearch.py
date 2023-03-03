@@ -29,15 +29,22 @@ from tools.load_data import load_data
 from models.eeg_encoder import EEGEncoder
 from models.envelope_encoder import EnvelopeEncoder
 from models.contrastive_eeg_speech import CLEE
+# -------------------------------------
+
+
+
+# Read the command-line argument passed to the interpreter when invoking the script
+lr = sys.argv[1]
+batch_size = sys.argv[2]
 
 
 # Read data
-subj_ids = [1] #list(range(1, 20))
+subj_ids = list(range(1, 20))
 fs = 128
 window_size = int(5 * fs)
 stride_size_train, stride_size_val, stride_size_test = int(2.5 * fs), int(5 * fs), int(5 * fs)
-batch_size = int(32)
-lr = 0.001
+batch_size = int(batch_size)
+lr = lr
 
 n_channs = 129 # 128 for eeg, 1 for env
 print('-------------------------------------')
@@ -81,7 +88,7 @@ model = CLEE(eeg_encoder, env_encoder)
 model.to(device)
 
 # Train model
-models_dict = {'SIMPLE': model}
+models_dict = {f'lr_{lr}_bs_{batch_size}': model}
 lossi = []
 udri = [] # update / data ratio 
 ud = []
@@ -100,7 +107,7 @@ for name, model in models_dict.items():
     loss_batches = []
 
 
-    for epoch in range(1, 50):
+    for epoch in range(1, 400):
 
         print(f"====== Epoch: {epoch}")
 
