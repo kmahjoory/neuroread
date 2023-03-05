@@ -11,15 +11,13 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 
 import mne
-
-import matplotlib
-import matplotlib.pyplot as plt
 import time
 
 from torchsummary import summary
 from torch.utils.tensorboard import SummaryWriter
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("----------------------------------")
 print(device)
 
 from tools.train import eval_model_cl
@@ -30,21 +28,28 @@ from models.eeg_encoder import EEGEncoder
 from models.envelope_encoder import EnvelopeEncoder
 from models.contrastive_eeg_speech import CLEE
 # -------------------------------------
-
+from pynvml import *
+nvmlInit()
+h = nvmlDeviceGetHandleByIndex(0)
+info = nvmlDeviceGetMemoryInfo(h)
+print(f'total    : {info.total/1e9}')
+print(f'free     : {info.free/1e9}')
+print(f'used     : {info.used/1e9}')
 
 
 # Read the command-line argument passed to the interpreter when invoking the script
-lr = sys.argv[1]
-batch_size = sys.argv[2]
+lr = 0.001 #sys.argv[1]
+batch_size = 32 #sys.argv[2]
 
 
 # Read data
-subj_ids = list(range(1, 20))
+subj_ids = list(range(1, 3))
 fs = 128
 window_size = int(5 * fs)
 stride_size_train, stride_size_val, stride_size_test = int(2.5 * fs), int(5 * fs), int(5 * fs)
 batch_size = int(batch_size)
-lr = lr
+lr = float(lr)
+
 
 n_channs = 129 # 128 for eeg, 1 for env
 print('-------------------------------------')
