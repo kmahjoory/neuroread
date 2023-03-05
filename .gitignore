@@ -133,3 +133,4 @@ data/raw/
 data/preprocessed/
 .DS_Store
 data/.DS_Store
+notebooks/
