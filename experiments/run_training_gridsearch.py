@@ -133,7 +133,7 @@ for name, model in models_dict.items():
     print(f"+--------------New model: {name}----------------------+")
     run_time = time.strftime('%m%d_%H%M%S')
     if save_curves:
-        writer = SummaryWriter(log_dir=f"runs/{name}_{run_time}")
+        writer = SummaryWriter(log_dir=f"../models/logs/{name}_{run_time}")
     model.to(device)
     optimizer = optim.NAdam(model.parameters(), lr=lr)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=200, gamma=0.7)
@@ -206,8 +206,7 @@ for name, model in models_dict.items():
 
         # Save the best model
         if save_best:
-            if not os.path.exists('best_models'):
-                os.mkdir('best_models')
+            
             if epoch == 1:
                 best_loss = loss_val    
 
