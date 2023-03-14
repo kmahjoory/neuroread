@@ -17,8 +17,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import time
 
-from tools.train import eval_model_cl
-from tools.data import unfold_raw, rm_repeated_annotations
+from src.train import eval_model_cl
+from src.data.utils import unfold_raw, rm_repeated_annotations
 
 
 

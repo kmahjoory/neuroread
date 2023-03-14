@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 
-from models.utils import *
+from src.models.utils import *
 
 
 from collections import OrderedDict

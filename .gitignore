@@ -134,3 +134,7 @@ data/preprocessed/
 .DS_Store
 data/.DS_Store
 notebooks/
+datasets/
+models/best_models/
+notes/
+reports/
