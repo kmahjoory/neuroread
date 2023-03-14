@@ -136,5 +136,7 @@ data/.DS_Store
 notebooks/
 datasets/
 models/best_models/
+models/logs/
 notes/
 reports/
+.vscode/
